@@ -1,5 +1,6 @@
+#define _USE_MATH_DEFINES // for C++
 #include "kalman_filter.h"
-
+#include <cmath>
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
@@ -56,13 +57,23 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
     * update the state by using Extended Kalman Filter equations
   */
     double ro = sqrt(x_(0)*x_(0) + x_(1)*x_(1));
-    double theta = atan(x_(1) / x_(0));
+    double theta = atan2(x_(1), x_(0));
     double ro_prime = (x_(0)*x_(2) + x_(1)*x_(3)) / ro;
     VectorXd h = VectorXd(3);
     h << ro, theta, ro_prime;
 
     VectorXd z_pred = H_ * x_;
     VectorXd y = z - h;
+
+    while (y(1) > M_PI)
+    {
+        y(1) -= M_PI;
+    }
+    while (y(1) < -M_PI)
+    {
+        y(1) += M_PI;
+    }
+
 	MatrixXd Ht = H_.transpose();
 	MatrixXd S = H_ * P_ * Ht + R_;
 	MatrixXd Si = S.inverse();
