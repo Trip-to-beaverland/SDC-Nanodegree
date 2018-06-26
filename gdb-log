@@ -4,8 +4,9 @@ EKF:
 
 Program received signal SIGSEGV, Segmentation fault.
 0x0000000000417c6a in decltype ((to_json({parm#1}, (forward<double&>)({parm#2}))),((void)())) nlohmann::detail::to_json_fn::call<nlohmann::basic_json<std::map, std::vector, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool, long, unsigned long, double, std::allocator, nlohmann::adl_serializer>, double&>(nlohmann::basic_json<std::map, std::vector, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool, long, unsigned long, double, std::allocator, nlohmann::adl_serializer>&, double&, nlohmann::detail::priority_tag<1u>) const ()
-(gdb) bt
-#0  0x0000000000417c6a in decltype ((to_json({parm#1}, (forward<double&>)({parm#2}))),((void)())) nlohmann::detail::to_json_fn::call<nlohmann::basic_json<std::map, std::vector, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool, long, unsigned long, double, std::allocator, nlohmann::adl_serializer>, double&>(nlohmann::basic_json<std::map, std::vector, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool, long, unsigned long, double, std::allocator, nlohmann::adl_serializer>&, double&, nlohmann::detail::priority_tag<1u>) const ()
+(gdb) backtrace
+#0  0x0000000000417c6a in decltype ((to_json({parm#1}, (forward<double&>)({parm#2}))),((void)())) nlohmann::detail::to_json_fn::call<nlohmann::basic_json<std::map, std::vector, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool, long, unsigned long, double, std::allocator, nlohmann::adl_serializer>, double&>(nlohmann::basic_json<std::map, std::vector, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool, long, unsigned long, double, std::allocator, nlohmann::adl_serializer>&, double&, nlohmann::detail::priority_tag<1u>) const
+    ()
 #1  0x0000000000412fbb in void nlohmann::detail::to_json_fn::operator()<nlohmann::basic_json<std::map, std::vector, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool, long, unsigned long, double, std::allocator, nlohmann::adl_serializer>, double&>(nlohmann::basic_json<std::map, std::vector, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool, long, unsigned long, double, std::allocator, nlohmann::adl_serializer>&, double&) const ()
 #2  0x000000000040fc5b in void nlohmann::adl_serializer<double, void>::to_json<nlohmann::basic_json<std::map, std::vector, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool, long, unsigned long, double, std::allocator, nlohmann::adl_serializer>, double&>(nlohmann::basic_json<std::map, std::vector, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool, long, unsigned long, double, std::allocator, nlohmann::adl_serializer>&, double&) ()
 #3  0x000000000040d715 in nlohmann::basic_json<std::map, std::vector, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool, long, unsigned long, double, std::allocator, nlohmann::adl_serializer>::basic_json<double&, double, 0>(double&) ()
@@ -13,12 +14,4 @@ Program received signal SIGSEGV, Segmentation fault.
 #5  0x000000000040a515 in std::_Function_handler<void (uWS::WebSocket<true>, char*, unsigned long, uWS::OpCode), main::{lambda(uWS::WebSocket<true>, char*, unsigned long, uWS::OpCode)#1}>::_M_invoke(std::_Any_data const&, uWS::WebSocket<true>&&, char*&&, unsigned long&&, uWS::OpCode&&) ()
 #6  0x00007ffffeb1aba6 in std::function<void (uWS::WebSocket<true>, char*, unsigned long, uWS::OpCode)>::operator()(uWS::WebSocket<true>, char*, unsigned long, uWS::OpCode) const () from /usr/lib/libuWS.so
 #7  0x00007ffffeb18696 in uWS::WebSocketProtocol<true>::handleFragment(char*, unsigned long, unsigned int, int, bool, void*) () from /usr/lib/libuWS.so
-#8  0x00007ffffeb1a650 in bool uWS::WebSocketProtocol<true>::consumeMessage<8, unsigned short>(unsigned short, char*&, unsigned int&, unsigned short, void*) ()
-   from /usr/lib/libuWS.so
-#9  0x00007ffffeb182e6 in uWS::WebSocketProtocol<true>::consume(char*, unsigned int, void*) () from /usr/lib/libuWS.so
-#10 0x00007ffffeb22538 in uWS::WebSocket<true>::onData(uS::Socket, char*, int) () from /usr/lib/libuWS.so
-#11 0x00007ffffeb20255 in void uS::Socket::io_cb<uWS::WebSocket<true> >(uv_poll_s*, int, int) () from /usr/lib/libuWS.so
-#12 0x00007ffffed58055 in ?? () from /usr/lib/x86_64-linux-gnu/libuv.so.1
-#13 0x00007ffffed49efc in uv_run () from /usr/lib/x86_64-linux-gnu/libuv.so.1
-#14 0x00007ffffeb20ee8 in uS::Node::run() () from /usr/lib/libuWS.so
-#15 0x000000000040a019 in main ()
+#8  0x00007ffffeb1a650 in bool uWS::WebSocketProtocol<true>::consumeMessage<8, unsigned short>(unsigned short, char*&, u---Type <return> to continue, or q <return> to quit---q
